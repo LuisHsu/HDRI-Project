@@ -61,5 +61,12 @@ m_picture* StartWidget::imgToPic(QImage &img, QString name)
             ret->data[j][i].a = qAlpha(line[j]);
         }
     }
+    // Get metadata
+    QFile fileIn(name);
+    fileIn.open(QFile::ReadOnly);
+    EXIFInfo info;
+    ParseEXIF((unsigned char*)fileIn.readAll().data(),fileIn.size (),info);
+    ret->exposureTime= info.exposureTime;
+    fileIn.close();
     return ret;
 }

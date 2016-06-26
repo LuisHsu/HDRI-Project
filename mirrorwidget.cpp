@@ -9,6 +9,7 @@ MirrorWidget::MirrorWidget(QWidget *parent) :
     ui->graphicsView->setScene(new QGraphicsScene);
     pixmap = new QGraphicsPixmapItem;
     ui->graphicsView->scene()->addItem(pixmap);
+    connect (ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(nextClick(bool)));
     hide();
 }
 
@@ -22,9 +23,4 @@ void MirrorWidget::showEvent(QShowEvent *)
     module.mod_main();
     pixmap->setPixmap(QPixmap::fromImage(picToImg(*(module.pictures.front()))));
     ui->graphicsView->scene()->update();
-}
-
-void MirrorWidget::on_pushButton_clicked(bool )
-{
-    emit nextWidget();
 }

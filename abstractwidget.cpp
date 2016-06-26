@@ -5,6 +5,11 @@ AbstractWidget::AbstractWidget(QWidget *parent) : QWidget(parent)
 
 }
 
+void AbstractWidget::showEvent(QShowEvent *)
+{
+
+}
+
 QImage AbstractWidget::picToImg(m_picture pict)
 {
     QImage ret(pict.width,pict.height,QImage::Format_RGBA8888);
@@ -16,3 +21,7 @@ QImage AbstractWidget::picToImg(m_picture pict)
     return ret;
 }
 
+void AbstractWidget::nextClick(bool)
+{
+    emit nextWidget ();
+}

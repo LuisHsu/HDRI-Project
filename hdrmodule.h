@@ -17,6 +17,7 @@ public:
     // Data will be stored as a 2-dimentional array, format: data[x][y]
     m_pixel **data;
     unsigned int width,height;
+    float exposureTime;
     string fileName;
 };
 

@@ -7,9 +7,12 @@
 #include <QList>
 #include <QImage>
 #include <QLabel>
+#include <QtMultimedia/QMediaPlayer>
+#include <QFile>
 #include <vector>
 
 #include <hdrmodule.h>
+#include <exif.h>
 
 namespace Ui {
 class StartWidget;

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,15 +18,21 @@ SOURCES += main.cpp\
     hdrmodule.cpp \
     mirrormodule.cpp \
     mirrorwidget.cpp \
-    abstwidget.cpp
+    abstractwidget.cpp \
+    exif.cpp
 
 HEADERS  += mainwindow.h \
     hdrmodule.h \
     startwidget.h \
     mirrormodule.h \
     abstractwidget.h \
-    mirrorwidget.h
+    mirrorwidget.h \
+    exif.h
 
 FORMS    += mainwindow.ui \
     startwidget.ui \
     mirrorwidget.ui
+
+DISTFILES += \
+    LICENSE \
+    README.md

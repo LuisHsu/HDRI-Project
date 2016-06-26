@@ -8,11 +8,56 @@ MirrorModule::MirrorModule()
 void MirrorModule::mod_main()
 {
     m_picture *pict = pictures.at(0);
+    float sumPic[pict->width][pict->height];
     for(int i=0; i<pict->width; ++i){
         for(int j=0; j<pict->height; ++j){
-            pict->data[i][j].r = 255 - pict->data[i][j].r;
-            pict->data[i][j].g = 255 - pict->data[i][j].g;
-            pict->data[i][j].b = 255 - pict->data[i][j].b;
+            sumPic[i][j] = 0;
+        }
+    }
+    for(int p = 0; p<pictures.size(); ++p){
+        pict = pictures.at(p);
+        for(int i=0; i<pict->width; ++i){
+            for(int j=0; j<pict->height; ++j){
+                sumPic[i][j] += pict->data[i][j].r;
+            }
+        }
+    }
+    pict = pictures.at(0);
+    for(int i=0; i<pict->width; ++i){
+        for(int j=0; j<pict->height; ++j){
+           pict->data[i][j].r = sumPic[i][j] / pictures.size();
+           sumPic[i][j] = 0;
+        }
+    }
+
+    for(int p = 0; p<pictures.size(); ++p){
+        pict = pictures.at(p);
+        for(int i=0; i<pict->width; ++i){
+            for(int j=0; j<pict->height; ++j){
+                sumPic[i][j] += pict->data[i][j].g;
+            }
+        }
+    }
+    pict = pictures.at(0);
+    for(int i=0; i<pict->width; ++i){
+        for(int j=0; j<pict->height; ++j){
+           pict->data[i][j].g = sumPic[i][j] / pictures.size();
+           sumPic[i][j] = 0;
+        }
+    }
+
+    for(int p = 0; p<pictures.size(); ++p){
+        pict = pictures.at(p);
+        for(int i=0; i<pict->width; ++i){
+            for(int j=0; j<pict->height; ++j){
+                sumPic[i][j] += pict->data[i][j].b;
+            }
+        }
+    }
+    pict = pictures.at(0);
+    for(int i=0; i<pict->width; ++i){
+        for(int j=0; j<pict->height; ++j){
+           pict->data[i][j].b = sumPic[i][j] / pictures.size();
         }
     }
 }
