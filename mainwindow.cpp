@@ -20,7 +20,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::nextWidget()
 {
-    if(curWidget == widgetList.size()-1){
+    if((int)curWidget == widgetList.size()-1){
         QApplication::exit(0);
     }else{
         widgetList.at(curWidget)->hide();

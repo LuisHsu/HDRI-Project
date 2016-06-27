@@ -16,6 +16,7 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     startwidget.cpp \
     hdrmodule.cpp \
+    calweight.cpp \
     mirrormodule.cpp \
     mirrorwidget.cpp \
     abstractwidget.cpp \
@@ -24,6 +25,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     hdrmodule.h \
     startwidget.h \
+    calweight.h \
     mirrormodule.h \
     abstractwidget.h \
     mirrorwidget.h \

@@ -49,12 +49,12 @@ m_picture* StartWidget::imgToPic(QImage &img, QString name)
     ret->width = img.width();
     ret->height = img.height();
     ret->data = new m_pixel*[ret->width];
-    for(int i=0; i<ret->width; ++i){
+    for(int i=0; i<(int)ret->width; ++i){
         ret->data[i] = new m_pixel[ret->height];
     }
-    for(int i=0; i<ret->height; ++i){
+    for(int i=0; i<(int)ret->height; ++i){
         QRgb *line = (QRgb *)img.scanLine(i);
-        for(int j=0; j<ret->width; ++j){
+        for(int j=0; j<(int)ret->width; ++j){
             ret->data[j][i].r = qRed(line[j]);
             ret->data[j][i].g = qGreen(line[j]);
             ret->data[j][i].b = qBlue(line[j]);
