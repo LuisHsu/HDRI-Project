@@ -57,8 +57,7 @@ SOURCES       = main.cpp \
 		mirrorwidget.cpp \
 		abstractwidget.cpp \
 		exif.cpp \
-		matlabqt.cpp \
-		makeimagemat.cpp moc_mainwindow.cpp \
+		matlabqt.cpp moc_mainwindow.cpp \
 		moc_startwidget.cpp \
 		moc_abstractwidget.cpp
 OBJECTS       = main.o \
@@ -71,7 +70,6 @@ OBJECTS       = main.o \
 		abstractwidget.o \
 		exif.o \
 		matlabqt.o \
-		makeimagemat.o \
 		moc_mainwindow.o \
 		moc_startwidget.o \
 		moc_abstractwidget.o
@@ -219,8 +217,7 @@ DIST          = LICENSE \
 		abstractwidget.h \
 		mirrorwidget.h \
 		exif.h \
-		matlabqt.h \
-		makeimagemat.h main.cpp \
+		matlabqt.h main.cpp \
 		mainwindow.cpp \
 		startwidget.cpp \
 		hdrmodule.cpp \
@@ -229,8 +226,7 @@ DIST          = LICENSE \
 		mirrorwidget.cpp \
 		abstractwidget.cpp \
 		exif.cpp \
-		matlabqt.cpp \
-		makeimagemat.cpp
+		matlabqt.cpp
 QMAKE_TARGET  = HDRI-Project
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = HDRI-Project
@@ -556,8 +552,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h hdrmodule.h startwidget.h calweight.h mirrormodule.h abstractwidget.h mirrorwidget.h exif.h matlabqt.h makeimagemat.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp startwidget.cpp hdrmodule.cpp calweight.cpp mirrormodule.cpp mirrorwidget.cpp abstractwidget.cpp exif.cpp matlabqt.cpp makeimagemat.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h hdrmodule.h startwidget.h calweight.h mirrormodule.h abstractwidget.h mirrorwidget.h exif.h matlabqt.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp startwidget.cpp hdrmodule.cpp calweight.cpp mirrormodule.cpp mirrorwidget.cpp abstractwidget.cpp exif.cpp matlabqt.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui startwidget.ui mirrorwidget.ui $(DISTDIR)/
 
 
@@ -727,7 +723,6 @@ moc_mainwindow.cpp: ../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QMainWindow \
 		mirrormodule.h \
 		calweight.h \
 		matlabqt.h \
-		makeimagemat.h \
 		mainwindow.h
 	/home/kevin/Qt5.5.1/5.5/gcc_64/bin/moc $(DEFINES) -I/home/kevin/Qt5.5.1/5.5/gcc_64/mkspecs/linux-g++ -I/home/kevin/Dropbox/HDRI-Project -I/home/kevin/Qt5.5.1/5.5/gcc_64/include -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtMultimedia -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtWidgets -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtGui -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtNetwork -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
@@ -1142,7 +1137,6 @@ main.o: main.cpp mainwindow.h \
 		mirrormodule.h \
 		calweight.h \
 		matlabqt.h \
-		makeimagemat.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QApplication \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1296,7 +1290,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		mirrormodule.h \
 		calweight.h \
 		matlabqt.h \
-		makeimagemat.h \
 		ui_mainwindow.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QAction \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qaction.h \
@@ -1519,7 +1512,72 @@ mirrormodule.o: mirrormodule.cpp mirrormodule.h \
 		hdrmodule.h \
 		calweight.h \
 		matlabqt.h \
-		makeimagemat.h
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QDebug \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qset.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcontiguouscache.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mirrormodule.o mirrormodule.cpp
 
 mirrorwidget.o: mirrorwidget.cpp mirrorwidget.h \
@@ -1634,7 +1692,6 @@ mirrorwidget.o: mirrorwidget.cpp mirrorwidget.h \
 		mirrormodule.h \
 		calweight.h \
 		matlabqt.h \
-		makeimagemat.h \
 		ui_mirrorwidget.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QVariant \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QAction \
@@ -1798,11 +1855,6 @@ exif.o: exif.cpp exif.h
 
 matlabqt.o: matlabqt.cpp matlabqt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o matlabqt.o matlabqt.cpp
-
-makeimagemat.o: makeimagemat.cpp makeimagemat.h \
-		hdrmodule.h \
-		matlabqt.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o makeimagemat.o makeimagemat.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

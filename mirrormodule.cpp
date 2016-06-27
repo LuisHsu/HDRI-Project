@@ -1,21 +1,28 @@
 #include "mirrormodule.h"
-
 #include <QDebug>
 
 MirrorModule::MirrorModule()
 {
-
+    CalWeight *w = new CalWeight(0,255);
+    weight_func = w->getWeight();
 }
 
 void MirrorModule::mod_main()
 {
+    /*==================== Variable defined ====================*/
+    int lamda_smooth = 50;
+    /*==================== Variable defined ====================*/
     m_picture *pict;
-    // Calculate for every image sample
+    float *exposureMat_B = new float[(int)pictures.size()];
+    // Calculate for every image sample + exposures matrix
     for(unsigned int i = 0 ; i < pictures.size(); i++){
         pict = pictures.at(i);
         sampleSource(pict,pictures.size(),pict->width*pict->height);
         pictures[i] = pict;
+        // for exposures matrix B
+        exposureMat_B[i] = log(pict->exposureTime);
     }
+    // Generate the system for each color channel
 
 }
 
