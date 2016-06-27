@@ -58,7 +58,6 @@ m_picture* StartWidget::imgToPic(QImage &img, QString name)
             ret->data[j][i].r = qRed(line[j]);
             ret->data[j][i].g = qGreen(line[j]);
             ret->data[j][i].b = qBlue(line[j]);
-            ret->data[j][i].a = qAlpha(line[j]);
         }
     }
     // Get metadata

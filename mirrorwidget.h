@@ -16,6 +16,7 @@ public:
     explicit MirrorWidget(QWidget *parent = 0);
     ~MirrorWidget();
     void showEvent(QShowEvent *);
+
 private:
     Ui::MirrorWidget *ui;
     MirrorModule module;

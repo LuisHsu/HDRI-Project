@@ -8,19 +8,14 @@ using namespace std;
 
 // The structure of pixel
 typedef struct{
-    unsigned char r,g,b,a;
+    float r,g,b;
 }m_pixel;
-
-typedef struct{
-    unsigned char r,g,b;
-}m_sample;
 
 // The class of each pixture
 class m_picture{
 public:
     // Data will be stored as a 2-dimentional array, format: data[x][y]
-    m_pixel **data;
-    m_sample *sample;
+    m_pixel **data, *sample;
     unsigned int width,height;
     float exposureTime;
     string fileName;
