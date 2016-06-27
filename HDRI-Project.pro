@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     mirrormodule.cpp \
     mirrorwidget.cpp \
     abstractwidget.cpp \
-    exif.cpp
+    exif.cpp \
+    matlabqt.cpp \
+    makeimagemat.cpp
 
 HEADERS  += mainwindow.h \
     hdrmodule.h \
@@ -29,7 +31,9 @@ HEADERS  += mainwindow.h \
     mirrormodule.h \
     abstractwidget.h \
     mirrorwidget.h \
-    exif.h
+    exif.h \
+    matlabqt.h \
+    makeimagemat.h
 
 FORMS    += mainwindow.ui \
     startwidget.ui \

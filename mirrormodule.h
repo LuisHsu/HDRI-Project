@@ -3,6 +3,8 @@
 
 #include <hdrmodule.h>
 #include <calweight.h>
+#include <matlabqt.h>
+#include <makeimagemat.h>
 
 class MirrorModule : public HDRModule
 {

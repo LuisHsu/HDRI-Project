@@ -56,7 +56,9 @@ SOURCES       = main.cpp \
 		mirrormodule.cpp \
 		mirrorwidget.cpp \
 		abstractwidget.cpp \
-		exif.cpp moc_mainwindow.cpp \
+		exif.cpp \
+		matlabqt.cpp \
+		makeimagemat.cpp moc_mainwindow.cpp \
 		moc_startwidget.cpp \
 		moc_abstractwidget.cpp
 OBJECTS       = main.o \
@@ -68,6 +70,8 @@ OBJECTS       = main.o \
 		mirrorwidget.o \
 		abstractwidget.o \
 		exif.o \
+		matlabqt.o \
+		makeimagemat.o \
 		moc_mainwindow.o \
 		moc_startwidget.o \
 		moc_abstractwidget.o
@@ -214,7 +218,9 @@ DIST          = LICENSE \
 		mirrormodule.h \
 		abstractwidget.h \
 		mirrorwidget.h \
-		exif.h main.cpp \
+		exif.h \
+		matlabqt.h \
+		makeimagemat.h main.cpp \
 		mainwindow.cpp \
 		startwidget.cpp \
 		hdrmodule.cpp \
@@ -222,7 +228,9 @@ DIST          = LICENSE \
 		mirrormodule.cpp \
 		mirrorwidget.cpp \
 		abstractwidget.cpp \
-		exif.cpp
+		exif.cpp \
+		matlabqt.cpp \
+		makeimagemat.cpp
 QMAKE_TARGET  = HDRI-Project
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = HDRI-Project
@@ -548,8 +556,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h hdrmodule.h startwidget.h calweight.h mirrormodule.h abstractwidget.h mirrorwidget.h exif.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp startwidget.cpp hdrmodule.cpp calweight.cpp mirrormodule.cpp mirrorwidget.cpp abstractwidget.cpp exif.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h hdrmodule.h startwidget.h calweight.h mirrormodule.h abstractwidget.h mirrorwidget.h exif.h matlabqt.h makeimagemat.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp startwidget.cpp hdrmodule.cpp calweight.cpp mirrormodule.cpp mirrorwidget.cpp abstractwidget.cpp exif.cpp matlabqt.cpp makeimagemat.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui startwidget.ui mirrorwidget.ui $(DISTDIR)/
 
 
@@ -717,6 +725,9 @@ moc_mainwindow.cpp: ../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QMainWindow \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		mirrormodule.h \
+		calweight.h \
+		matlabqt.h \
+		makeimagemat.h \
 		mainwindow.h
 	/home/kevin/Qt5.5.1/5.5/gcc_64/bin/moc $(DEFINES) -I/home/kevin/Qt5.5.1/5.5/gcc_64/mkspecs/linux-g++ -I/home/kevin/Dropbox/HDRI-Project -I/home/kevin/Qt5.5.1/5.5/gcc_64/include -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtMultimedia -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtWidgets -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtGui -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtNetwork -I/home/kevin/Qt5.5.1/5.5/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
@@ -1129,6 +1140,9 @@ main.o: main.cpp mainwindow.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		mirrormodule.h \
+		calweight.h \
+		matlabqt.h \
+		makeimagemat.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QApplication \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1280,7 +1294,43 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		mirrormodule.h \
-		ui_mainwindow.h
+		calweight.h \
+		matlabqt.h \
+		makeimagemat.h \
+		ui_mainwindow.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QGridLayout \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qrubberband.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 startwidget.o: startwidget.cpp startwidget.h \
@@ -1416,7 +1466,47 @@ startwidget.o: startwidget.cpp startwidget.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QFile \
 		exif.h \
-		ui_startwidget.h
+		ui_startwidget.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QGridLayout \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QScrollArea \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qscrollarea.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startwidget.o startwidget.cpp
 
 hdrmodule.o: hdrmodule.cpp hdrmodule.h
@@ -1426,7 +1516,10 @@ calweight.o: calweight.cpp calweight.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o calweight.o calweight.cpp
 
 mirrormodule.o: mirrormodule.cpp mirrormodule.h \
-		hdrmodule.h
+		hdrmodule.h \
+		calweight.h \
+		matlabqt.h \
+		makeimagemat.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mirrormodule.o mirrormodule.cpp
 
 mirrorwidget.o: mirrorwidget.cpp mirrorwidget.h \
@@ -1539,7 +1632,57 @@ mirrorwidget.o: mirrorwidget.cpp mirrorwidget.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QDebug \
 		hdrmodule.h \
 		mirrormodule.h \
-		ui_mirrorwidget.h
+		calweight.h \
+		matlabqt.h \
+		makeimagemat.h \
+		ui_mirrorwidget.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QVariant \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QGraphicsView \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qpainter.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QGridLayout \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mirrorwidget.o mirrorwidget.cpp
 
 abstractwidget.o: abstractwidget.cpp abstractwidget.h \
@@ -1652,6 +1795,14 @@ abstractwidget.o: abstractwidget.cpp abstractwidget.h \
 
 exif.o: exif.cpp exif.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o exif.o exif.cpp
+
+matlabqt.o: matlabqt.cpp matlabqt.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o matlabqt.o matlabqt.cpp
+
+makeimagemat.o: makeimagemat.cpp makeimagemat.h \
+		hdrmodule.h \
+		matlabqt.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o makeimagemat.o makeimagemat.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

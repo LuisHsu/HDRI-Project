@@ -7,7 +7,15 @@ MirrorModule::MirrorModule()
 
 void MirrorModule::mod_main()
 {
-    m_picture *pict = pictures.at(0);
+    m_picture *pict;
+    // Calculate for every image sample
+    for(int i = 0 ; i < (int)pictures.size(); i++){
+        pict = pictures.at(i);
+        pict = MakeImageMat::sampleSource(pict,(int)pictures.size(),pict->width*pict->height);
+        pictures[i] = pict;
+    }
+    // Do summation
+    pict = pictures.at(0);
     float sumPic[pict->width][pict->height];
     for(int i=0; i<(int)pict->width; ++i){
         for(int j=0; j<(int)pict->height; ++j){
