@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui multimedia
+QT       += core gui printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,26 +16,38 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     startwidget.cpp \
     hdrmodule.cpp \
-    calweight.cpp \
-    mirrormodule.cpp \
-    mirrorwidget.cpp \
     abstractwidget.cpp \
     exif.cpp \
-    matlabqt.cpp
+    gsolver.cpp \
+    calweight.cpp \
+    qcustomplot.cpp \
+    gsolvemodule.cpp \
+    gsolvewidget.cpp \
+    gradientmodule.cpp \
+    gradientwidget.cpp \
+    tonemappingmodule.cpp \
+    tonemappingwidget.cpp
 
 HEADERS  += mainwindow.h \
     hdrmodule.h \
     startwidget.h \
-    calweight.h \
-    mirrormodule.h \
     abstractwidget.h \
-    mirrorwidget.h \
     exif.h \
-    matlabqt.h
+    gsolver.h \
+    calweight.h \
+    qcustomplot.h \
+    gsolvemodule.h \
+    gsolvewidget.h \
+    gradientmodule.h \
+    gradientwidget.h \
+    tonemappingmodule.h \
+    tonemappingwidget.h
 
 FORMS    += mainwindow.ui \
     startwidget.ui \
-    mirrorwidget.ui
+    gsolvewidget.ui \
+    gradientwidget.ui \
+    tonemappingwidget.ui
 
 DISTFILES += \
     LICENSE \

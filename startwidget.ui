@@ -14,13 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" columnstretch="2,1">
-   <item row="2" column="1">
-    <widget class="QPushButton" name="nextButton">
-     <property name="text">
-      <string>Next</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" colspan="2">
     <widget class="QScrollArea" name="scrollArea">
      <property name="widgetResizable">
@@ -32,7 +25,7 @@
         <x>0</x>
         <y>0</y>
         <width>380</width>
-        <height>222</height>
+        <height>216</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -46,6 +39,13 @@
     <widget class="QPushButton" name="browseButton">
      <property name="text">
       <string>Add Files</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QPushButton" name="nextButton">
+     <property name="text">
+      <string>Next</string>
      </property>
     </widget>
    </item>

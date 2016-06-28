@@ -6,7 +6,9 @@
 
 #include <abstractwidget.h>
 #include <startwidget.h>
-#include <mirrorwidget.h>
+#include <gsolvewidget.h>
+#include <gradientwidget.h>
+#include <tonemappingwidget.h>
 
 namespace Ui {
 class MainWindow;

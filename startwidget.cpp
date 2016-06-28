@@ -34,11 +34,16 @@ void StartWidget::browseFile(bool)
     }
 }
 
+bool expoCmp(m_picture *a, m_picture *b){
+    return a->exposureTime < b->exposureTime;
+}
+
 void StartWidget::nextStep(bool)
 {
     for(int i=0; i<nameList.size(); ++i){
         HDRModule::pictures.push_back(imgToPic(imageList[i],nameList[i]));
     }
+    std::sort(HDRModule::pictures.begin(), HDRModule::pictures.end(), expoCmp);
     emit nextWidget();
 }
 

@@ -1,9 +1,10 @@
 #include "calweight.h"
 
+#include <iostream>
+
 CalWeight::CalWeight(int zmin, int zmax)
 {
     // Initialize the weight
-    weight = new int[256];
     for(int i = 0 ; i < 255 ; i++){
         if(i < 0.5*(zmin+zmax)){
             weight[i] = (i-zmin)+1;
@@ -14,9 +15,9 @@ CalWeight::CalWeight(int zmin, int zmax)
     }
 }
 
-int *CalWeight::getWeight()
+int CalWeight::getWeight(int index)
 {
-    return weight;
+    return weight[index];
 }
 
 

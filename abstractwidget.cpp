@@ -5,7 +5,7 @@ AbstractWidget::AbstractWidget(QWidget *parent) : QWidget(parent)
 
 }
 
-void AbstractWidget::showEvent(QShowEvent *)
+void AbstractWidget::execute()
 {
 
 }

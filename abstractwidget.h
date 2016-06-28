@@ -13,7 +13,7 @@ class AbstractWidget : public QWidget
     Q_OBJECT
 public:
     explicit AbstractWidget(QWidget *parent = 0);
-    virtual void showEvent (QShowEvent *);
+    virtual void execute();
 signals:
     void nextWidget();
 protected:
