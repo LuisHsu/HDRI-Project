@@ -1,5 +1,5 @@
+<<<<<<< HEAD:gsolvemodule.cpp
 #include "gsolvemodule.h"
-
 #include <QDebug>
 
 GSolveModule::GSolveModule()
@@ -8,6 +8,7 @@ GSolveModule::GSolveModule()
 
 void GSolveModule::mod_main()
 {
+    int lamda_smooth = 50;
     m_picture *pict;
     // Calculate for every image sample + exposures matrix
     float exposureMat_B[pictures.size()];
