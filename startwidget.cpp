@@ -35,7 +35,7 @@ void StartWidget::browseFile(bool)
 }
 
 bool expoCmp(m_picture *a, m_picture *b){
-    return a->exposureTime < b->exposureTime;
+    return a->exposureTime > b->exposureTime;
 }
 
 void StartWidget::nextStep(bool)

@@ -7,9 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     widgetList.push_back(new StartWidget(this));
-    widgetList.push_back(new GSolveWidget(this));
-    widgetList.push_back(new GradientWidget(this));
-    widgetList.push_back(new ToneMappingWidget(this));
+	widgetList.push_back(new AlignmentWidget(this));
+	//widgetList.push_back(new GSolveWidget(this));
+	//widgetList.push_back(new GradientWidget(this));
+	//widgetList.push_back(new ToneMappingWidget(this));
     setCentralWidget(widgetList.front());
     connect(widgetList.front(),SIGNAL(nextWidget()),this,SLOT(nextWidget()));
     widgetList.front()->show();

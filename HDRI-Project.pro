@@ -26,7 +26,9 @@ SOURCES += main.cpp\
     gradientmodule.cpp \
     gradientwidget.cpp \
     tonemappingmodule.cpp \
-    tonemappingwidget.cpp
+    tonemappingwidget.cpp \
+    alignmentmodel.cpp \
+    alignmentwidget.cpp
 
 HEADERS  += mainwindow.h \
     hdrmodule.h \
@@ -41,13 +43,16 @@ HEADERS  += mainwindow.h \
     gradientmodule.h \
     gradientwidget.h \
     tonemappingmodule.h \
-    tonemappingwidget.h
+    tonemappingwidget.h \
+    alignmentmodel.h \
+    alignmentwidget.h
 
 FORMS    += mainwindow.ui \
     startwidget.ui \
     gsolvewidget.ui \
     gradientwidget.ui \
-    tonemappingwidget.ui
+    tonemappingwidget.ui \
+    alignmentwidget.ui
 
 DISTFILES += \
     LICENSE \

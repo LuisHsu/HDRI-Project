@@ -18,11 +18,14 @@ ToneMappingWidget::~ToneMappingWidget()
 void ToneMappingWidget::execute()
 {
     module.mod_main ();
-    m_picture renPic;
-    renPic.width = module.p_width;
-    renPic.height = module.p_height;
-    renPic.data = module.ldrPic;
-    ui->graphicsView->scene()->addPixmap(QPixmap::fromImage(picToImg(renPic)));
+    QImage ret(module.p_width,module.p_height,QImage::Format_RGBA8888);
+    for(int i=0; i<ret.width(); ++i){
+        for(int j=0; j<ret.height(); ++j){
+            ret.setPixel(i,j,qRgba(0+module.ldrPic.at(i)[j].r,0+module.ldrPic.at(i)[j].g,0+module.ldrPic.at(i)[j].b,255));
+        }
+    }
+    //ret.save(QString::fromStdString (module.outFilename),"JPG");
+    ui->graphicsView->scene()->addPixmap(QPixmap::fromImage(ret));
     ui->graphicsView->scene()->update();
 }
 

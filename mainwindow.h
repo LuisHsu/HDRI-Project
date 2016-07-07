@@ -6,6 +6,7 @@
 
 #include <abstractwidget.h>
 #include <startwidget.h>
+#include <alignmentwidget.h>
 #include <gsolvewidget.h>
 #include <gradientwidget.h>
 #include <tonemappingwidget.h>
